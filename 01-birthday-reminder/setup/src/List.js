@@ -1,9 +1,21 @@
 import React from 'react';
 
-const List = () => {
+const List = props => {
+  const {birthdays} = props
   return (
     <>
-      <h2>list component</h2>
+      {birthdays.map(birthday => {
+        const {id, name, age, image} = birthday
+        return (
+          <article key={id} className='person'>
+            <img src={image} alt={name}/>
+            <div>
+              <h4>{name}</h4>
+              <p>{age} years old</p>
+            </div>
+          </article>
+        )
+      })}
     </>
   );
 };
